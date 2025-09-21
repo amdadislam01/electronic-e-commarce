@@ -8,7 +8,7 @@ const Hero = () => {
         {/* Left Side */}
         <div className=" place-content-end max-xs:min-w-80">
           <div className="p-4">
-            <p className='text-white max-w-xs'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam mollitia error neque ut similique possimus!</p>
+            <p className='text-white max-w-xs'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam mollitia error neque.</p>
             <button className='btn-white mt-6'>Explore More</button>
           </div>
         </div>
