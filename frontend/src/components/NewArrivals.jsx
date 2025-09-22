@@ -22,10 +22,10 @@ const NewArrivals = () => {
   useEffect(() => {
     const data = products.slice(0, 7);
     setPopularProduct(data);
-  }, [products]);
+  }, []);
 
   return (
-    <section className="max-padd-container pt-16">
+    <section className="max-padd-container py-16">
       <Title
         title1={"New"}
         title2={"Arrivals"}
@@ -59,7 +59,7 @@ const NewArrivals = () => {
           },
         }}
         modules={[Autoplay]}
-        className="h-[399px] mt-5"
+        className="mt-5"
       >
         {popularProduct.map((product) => (
           <SwiperSlide key={product._id}>
