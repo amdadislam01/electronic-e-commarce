@@ -1,28 +1,26 @@
 import React, { useContext, useEffect, useState } from "react";
 import Title from "./Title";
 
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-// import required modules
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import Item from "./Item";
-import { products } from "../assets/data";
 import { ShopContext } from "../context/ShopContext";
 
 const NewArrivals = () => {
-  const {product} = useContext(ShopContext)
+  const { product } = useContext(ShopContext);
   const [popularProduct, setPopularProduct] = useState([]);
 
   useEffect(() => {
-    const data = products.slice(0, 7);
-    setPopularProduct(data);
-  }, []);
+    if (product && product.length > 0) {
+      const data = product.slice(0, 7);
+      setPopularProduct(data);
+    }
+  }, [product]);
 
   return (
     <section className="max-padd-container py-16">
@@ -30,40 +28,42 @@ const NewArrivals = () => {
         title1={"New"}
         title2={"Arrivals"}
         titleStyles={"pb-10"}
-        paraStyles={"!block"}
+        paraStyles={"!block !pb-10"}
       />
       {/* Container */}
       <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
+        spaceBetween={20}
         autoplay={{
-          delay: 4000,
+          delay: 2500,
           disableOnInteraction: false,
         }}
+        pagination={{ clickable: true }}
+        // navigation={true}
+        loop={true} 
         breakpoints={{
-          300: {
-            slidesPerView: 2,
-            spaceBetween: 30,
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 10,
           },
-          666: {
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1024: {
             slidesPerView: 3,
             spaceBetween: 30,
           },
-          900: {
+          1280: {
             slidesPerView: 4,
             spaceBetween: 30,
           },
-          1300: {
-            slidesPerView: 5,
-            spaceBetween: 30,
-          },
         }}
-        modules={[Autoplay]}
+        modules={[Autoplay, Pagination, Navigation]}
         className="mt-5"
       >
-        {popularProduct.map((product) => (
-          <SwiperSlide key={product._id}>
-            <Item product={product} />
+        {popularProduct.map((p) => (
+          <SwiperSlide key={p._id}>
+            <Item product={p} />
           </SwiperSlide>
         ))}
       </Swiper>
