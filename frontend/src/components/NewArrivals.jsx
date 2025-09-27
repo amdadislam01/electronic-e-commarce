@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import Item from "./Item";
 import { ShopContext } from "../context/ShopContext";
 
@@ -28,7 +28,7 @@ const NewArrivals = () => {
         title1={"New"}
         title2={"Arrivals"}
         titleStyles={"pb-10"}
-        paraStyles={"!block !pb-10"}
+        paraStyles={"!block"}
       />
       {/* Container */}
       <Swiper
@@ -58,8 +58,8 @@ const NewArrivals = () => {
             spaceBetween: 30,
           },
         }}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mt-5"
+        modules={[Autoplay]}
+        className=""
       >
         {popularProduct.map((p) => (
           <SwiperSlide key={p._id}>

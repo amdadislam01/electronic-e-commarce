@@ -13,7 +13,7 @@ const About = () => {
       <div className="flex flex-col md:flex-row gap-5 gap-y-10">
         {/* Testimonial */}
         <div className="flex-1 flexCenter flex-col">
-          <Title title1={'People'} title2={'Says'} title1Styles={'h3'} />
+          <Title title1={'People'} title2={'Says'} title1Styles={'h3'} titleStyles={'!pb-2'} />
           <img src={testimonial} alt="" width={55} height={55} className='rounded-full border border-r-gray-200' />
           <h4 className='h4 mt-6'>MD Amdad Islam</h4>
           <p className="relative bottom-2">CEO at TechStack</p>
