@@ -58,6 +58,7 @@ const Collection = () => {
   };
 
   const totalpage = Math.ceil(filteredProduct.length / itemsPerPage)
+  
  
   return (
     <div className="max-padd-container !px-0">
