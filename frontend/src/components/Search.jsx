@@ -7,7 +7,7 @@ const Search = () => {
   return (
     <div className=''>
       <div className=''>
-        <div>
+        <div className=''>
           <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Search here.......' className='border-none outline-none w-full bg-white text-sm' />
           <div>
             <FaSearch className='cursor-pointer' />
