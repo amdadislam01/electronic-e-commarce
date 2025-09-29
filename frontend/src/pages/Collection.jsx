@@ -6,7 +6,7 @@ const Collection = () => {
   const { products, search } = useContext(ShopContext);
   const [categories, setCategories] = useState([]);
   const [sortType, setSortType] = useState("relevant");
-  const [filteredProduct, setFilteredProduct] = useState(second);
+  const [filteredProduct, setFilteredProduct] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
