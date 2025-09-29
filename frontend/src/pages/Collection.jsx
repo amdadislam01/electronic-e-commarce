@@ -58,11 +58,13 @@ const Collection = () => {
     const endIndex = startIndex + itemsPerPage;
     return filteredProduct.slice(startIndex, endIndex);
   };
-  
+
 
   const totalpage = Math.ceil(filteredProduct.length / itemsPerPage)
   
  
+
+  
   return (
     <div className="max-padd-container !px-0">
       <div className="flex flex-col sm:flex-row gap-8 mb-16">
