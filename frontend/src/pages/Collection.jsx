@@ -32,7 +32,7 @@ const Collection = () => {
     }
     return filtered;
   };
-  
+
 
   const applySorting = (productList) => {
     switch (sortType) {
@@ -44,6 +44,7 @@ const Collection = () => {
         return productList;
     }
   };
+
 
   useEffect(() => {
     let filtered = applyFilter();
@@ -57,6 +58,7 @@ const Collection = () => {
     const endIndex = startIndex + itemsPerPage;
     return filteredProduct.slice(startIndex, endIndex);
   };
+  
 
   const totalpage = Math.ceil(filteredProduct.length / itemsPerPage)
   
