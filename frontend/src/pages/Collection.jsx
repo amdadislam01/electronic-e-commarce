@@ -32,6 +32,7 @@ const Collection = () => {
     }
     return filtered;
   };
+  
 
   const applySorting = (productList) => {
     switch (sortType) {
