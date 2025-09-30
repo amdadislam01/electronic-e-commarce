@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Search from "../components/Search";
+import Item from "../components/Item";
 import { ShopContext } from "../context/ShopContext";
 
 const Collection = () => {
@@ -10,6 +11,8 @@ const Collection = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
+  // console.log(products);
+
   const toggleFilter = (value, setState) => {
     setState((prev) =>
       prev.includes(value)
@@ -19,20 +22,22 @@ const Collection = () => {
   };
 
   const applyFilter = () => {
-    let filtered = [...products];
+    let filtered = [...(products || [])];
+
     if (search) {
       filtered = filtered.filter((product) =>
         product.name.toLowerCase().includes(search.toLowerCase())
       );
     }
+
     if (categories.length) {
-      filtered = filtered.filter((product) => {
-        categories.includes(product.categories);
-      });
+      filtered = filtered.filter((product) =>
+        categories.includes(product.category)
+      );
     }
+
     return filtered;
   };
-
 
   const applySorting = (productList) => {
     switch (sortType) {
@@ -44,7 +49,6 @@ const Collection = () => {
         return productList;
     }
   };
-
 
   useEffect(() => {
     let filtered = applyFilter();
@@ -59,12 +63,8 @@ const Collection = () => {
     return filteredProduct.slice(startIndex, endIndex);
   };
 
+  const totalpage = Math.ceil(filteredProduct.length / itemsPerPage);
 
-  const totalpage = Math.ceil(filteredProduct.length / itemsPerPage)
-  
- 
-
-  
   return (
     <div className="max-padd-container !px-0">
       <div className="flex flex-col sm:flex-row gap-8 mb-16">
@@ -84,16 +84,24 @@ const Collection = () => {
               ].map((cat) => (
                 <label key={cat} className="flex gap-2 medium-14 text-gray-30">
                   <input
-                  onChange={(e) => toggleFilter(e.target.value, setCategories)}
-                  type="checkbox" value={cat} className="w-3" />
+                    onChange={(e) =>
+                      toggleFilter(e.target.value, setCategories)
+                    }
+                    type="checkbox"
+                    value={cat}
+                    className="w-3"
+                  />
                   {cat}
                 </label>
               ))}
             </div>
           </div>
-          <div className="">
-            <h5>Sort By</h5>
-            <select>
+          <div className="px-4 py-3 mt-6 bg-white rounded-xl">
+            <h5 className="h5 mb-4">Sort By</h5>
+            <select
+              onChange={(e) => setSortType(e.target.value)}
+              className="border border-slate-900/5 outline-none text-gray-30 medium-14 h-8 w-full rounded px-2"
+            >
               <option value="relevant">Relevant</option>
               <option value="low">Low</option>
               <option value="high">High</option>
@@ -101,8 +109,16 @@ const Collection = () => {
           </div>
         </div>
         {/* Right Side */}
-        <div className="">
-          <div className="">{"productss"}</div>
+        <div className="pr-5 rounded-l-xl">
+          <div className="">
+            {getPagintedProduct().length > 0 ? (
+              getPagintedProduct().map((product) => <Item product={product} />)
+            ) : (
+              <p className="text-center p-5">
+                No Products found for selected filters
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </div>
