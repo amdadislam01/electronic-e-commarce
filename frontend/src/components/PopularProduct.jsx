@@ -11,7 +11,7 @@ const PopularProduct = () => {
     setPopularProduct(data.slice(0, 5));
     // console.log(data);
     
-  })
+  }, [products])
   return (
     <section className='max-padd-container py-16'>
       <Title 

@@ -7,7 +7,7 @@ const Item = ({ product }) => {
     <div className="overflow-hidden">
       {/* image */}
       <Link
-        to={"/"}
+        to={`/product/${product._id}`}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
         className="flexCenter p-2 bg-[#f5f5f5] overflow-hidden relative"
