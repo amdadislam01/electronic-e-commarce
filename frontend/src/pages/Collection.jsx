@@ -69,7 +69,7 @@ const Collection = () => {
     <div className="max-padd-container !px-0">
       <div className="flex flex-col sm:flex-row gap-8 mb-16">
         {/* Filter option */}
-        <div className="min-w-72 bg-primary p-4 mt-8 pl-6 lg:pl-12">
+        <div className="min-w-72 bg-primary p-4 pt-8 pl-6 lg:pl-12">
           <Search />
           <div className="pl-5 py-3 mt-4 bg-white rounded-xl">
             <h5 className="h5 mb-4">Categories</h5>
@@ -110,7 +110,7 @@ const Collection = () => {
         </div>
         {/* Right Side */}
         <div className="pr-5 rounded-l-xl">
-          <div className="">
+          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 gap-y-6">
             {getPagintedProduct().length > 0 ? (
               getPagintedProduct().map((product) => <Item product={product} />)
             ) : (
@@ -118,6 +118,38 @@ const Collection = () => {
                 No Products found for selected filters
               </p>
             )}
+          </div>
+          {/* Pagentation  */}
+          <div className="flexCenter flex-wrap gap-4 mt-14 mb-10">
+            <button
+              disabled={currentPage === 1}
+              onClick={() => setCurrentPage((prev) => prev - 1)}
+              className={`${
+                currentPage === 1 && "opacity-50 cursor-not-allowed"
+              } btn-secondary !py-1 !px-3`}
+            >
+              Previous
+            </button>
+            {Array.from({ length: totalpage }, (_, index) => (
+              <button
+                key={index + 1}
+                onClick={() => setCurrentPage(index + 1)}
+                className={`${
+                  currentPage === index + 1 && "!bg-tertiary text-white"
+                } btn-light !py-1 !px-3`}
+              >
+                {index + 1}
+              </button>
+            ))}
+            <button
+              disabled={currentPage === totalpage}
+              onClick={() => setCurrentPage((prev) => prev + 1)}
+              className={`${
+                currentPage === totalpage && "opacity-50 cursor-not-allowed"
+              } btn-secondary !py-1 !px-3`}
+            >
+              Next
+            </button>
           </div>
         </div>
       </div>
