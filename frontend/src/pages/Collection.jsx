@@ -112,7 +112,7 @@ const Collection = () => {
         <div className="pr-5 rounded-l-xl">
           <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 gap-y-6">
             {getPagintedProduct().length > 0 ? (
-              getPagintedProduct().map((product) => <Item product={product} />)
+              getPagintedProduct().map((product, i) => <Item key={i} product={product} />)
             ) : (
               <p className="text-center p-5">
                 No Products found for selected filters

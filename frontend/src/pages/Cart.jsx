@@ -25,7 +25,7 @@ const Cart = () => {
               color: item,
               quantity: cartItems[items][item],
             });
-            initalQuantites[`${item}-${item}`] = cartItems[items][item];
+            initalQuantites[`${items}-${item}`] = cartItems[items][item];
           }
         }
       }
@@ -35,19 +35,21 @@ const Cart = () => {
   }, [cartItems, products]);
 
   const increment = (id, color) => {
-    const key = `${id}-${color}`;
-    const newValue = quantities[key] + 1;
+  const key = `${id}-${color}`;
+  const newValue = quantities[key] + 1;
+  setQuantities((prev) => ({ ...prev, [key]: newValue }));
+  updateQuantity(id, color, newValue); 
+};
+
+const dicrement = (id, color) => {
+  const key = `${id}-${color}`;
+  if (quantities[key] > 1) {
+    const newValue = quantities[key] - 1;
     setQuantities((prev) => ({ ...prev, [key]: newValue }));
-    updateQuantity((id, color, newValue));
-  };
-  const dicrement = (id, color) => {
-    const key = `${id}-${color}`;
-    if (quantities[key] > 1) {
-      const newValue = quantities[key] - 1;
-      setQuantities((prev) => ({ ...prev, [key]: newValue }));
-      updateQuantity((id, color, newValue));
-    }
-  };
+    updateQuantity(id, color, newValue); 
+  }
+};
+
 
   return (
     <section>
