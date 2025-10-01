@@ -4,6 +4,10 @@ import { ShopContext } from "../context/ShopContext";
 import { FaCheck, FaHeart, FaStar } from "react-icons/fa";
 import { FaStarHalfStroke, FaTruckFast } from "react-icons/fa6";
 import { TbShoppingBagPlus } from "react-icons/tb";
+import ProductDescription from "../components/ProductDescription";
+import ProductFeatures from "../components/ProductFeatures";
+import RelatedProduct from "../components/RelatedProduct";
+import Footer from "../components/Footer";
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -70,8 +74,8 @@ const ProductDetails = () => {
               {product.price}.00
             </h4>
             <p className="max-w-[555px]">{product.description}</p>
-            <div className="">
-              <div className="">
+            <div className="flex flex-col  gap-4 my-4   mb-5">
+              <div className="flex gap-2">
                 {[...product.colors].map((item, i) => (
                   <button
                     onClick={() => setColor(item)}
@@ -92,7 +96,7 @@ const ProductDetails = () => {
                 ))}
               </div>
             </div>
-            <div>
+            <div className="flex items-center gap-x-4">
               <button
                 className="btn-secondary !rounded-lg sm:w-1/2 flexCenter gap-x-2 capitalize"
                 onClick={() => {}}
@@ -101,13 +105,23 @@ const ProductDetails = () => {
               </button>
               <button className="btn-white !rounded-lg !py-3.5"><FaHeart /></button>
             </div>
-          <div className="">
+          <div className="flex items-center gap-x-2 mt-3">
             <FaTruckFast className="text-lg" />
             <span className="medium-14">Free Delivery on orders over 500$</span>
           </div>
+          <hr className="my-3 w-2/3" />
+          <div className="mt-2 flex-col gap-1 text-gray-30 text-[14px]">
+            <p>Authenticy You Can Trust</p>
+            <p>Enjoy Cash on Delivery for Your Convenience</p>
+            <p>Easy Returns and Exchanges Within 7 Days</p>
+          </div>
           </div>
         </div>
+        <ProductDescription />
+        <ProductFeatures />
+        <RelatedProduct category={product.category} />
       </div>
+      <Footer />
     </div>
   );
 };
