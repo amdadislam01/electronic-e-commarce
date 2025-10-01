@@ -7,6 +7,8 @@ import Blog from "./pages/Blog";
 import ProductDetails from "./pages/ProductDetails";
 import { ToastContainer } from "react-toastify";
 import Cart from "./pages/Cart";
+import PlaceOrder from "./pages/PlaceOrder";
+import Login from "./pages/Login";
 const App = () => {
   return (
     <main className="overflow-hidden text-tertiary">
@@ -29,6 +31,8 @@ const App = () => {
         <Route path="/blog" element={<Blog />} />
         <Route path="/product/:productId" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/place-order" element={<PlaceOrder />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </main>
   );

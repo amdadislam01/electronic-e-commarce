@@ -31,6 +31,7 @@ const ShopContextProvider = (props) => {
       cartData[itemId] = {};
       cartData[itemId][color] = 1;
     }
+    toast.success('Added to product')
     setCartItems(cartData);
   };
 
@@ -92,7 +93,8 @@ const ShopContextProvider = (props) => {
     addToCart,
     getCartCount,
     updateQuantity,
-    getCartAmount
+    getCartAmount,
+    navigate
   };
 
   return (
