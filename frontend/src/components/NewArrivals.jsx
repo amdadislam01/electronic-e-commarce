@@ -12,15 +12,15 @@ import Item from "./Item";
 import { ShopContext } from "../context/ShopContext";
 
 const NewArrivals = () => {
-  const { product } = useContext(ShopContext);
+  const { products } = useContext(ShopContext);
   const [popularProduct, setPopularProduct] = useState([]);
 
   useEffect(() => {
-    if (product && product.length > 0) {
-      const data = product.slice(0, 7);
+    if (products && products.length > 0) {
+      const data = products.slice(0, 7);
       setPopularProduct(data);
     }
-  }, [product]);
+  }, [products]);
 
   return (
     <section className="max-padd-container py-16">

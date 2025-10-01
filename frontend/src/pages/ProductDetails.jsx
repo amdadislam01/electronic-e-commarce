@@ -11,7 +11,7 @@ import Footer from "../components/Footer";
 
 const ProductDetails = () => {
   const { productId } = useParams();
-  const { products, currency } = useContext(ShopContext);
+  const { products, currency, addToCart } = useContext(ShopContext);
   const [product, setProduct] = useState(null);
   const [image, setImage] = useState("");
   const [color, setColor] = useState("");
@@ -21,7 +21,7 @@ const ProductDetails = () => {
     if (selectedProduct) {
       setProduct(selectedProduct);
       setImage(selectedProduct.image[0]);
-      console.log(selectedProduct);
+      // console.log(selectedProduct);
     }
   };
 
@@ -99,7 +99,7 @@ const ProductDetails = () => {
             <div className="flex items-center gap-x-4">
               <button
                 className="btn-secondary !rounded-lg sm:w-1/2 flexCenter gap-x-2 capitalize"
-                onClick={() => {}}
+                onClick={() => addToCart(product._id, color)}
               >
                 Add to Cart <TbShoppingBagPlus />
               </button>
