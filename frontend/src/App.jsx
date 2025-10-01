@@ -6,6 +6,7 @@ import Collection from "./pages/Collection";
 import Blog from "./pages/Blog";
 import ProductDetails from "./pages/ProductDetails";
 import { ToastContainer } from "react-toastify";
+import Cart from "./pages/Cart";
 const App = () => {
   return (
     <main className="overflow-hidden text-tertiary">
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/collection" element={<Collection />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/product/:productId" element={<ProductDetails />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </main>
   );

@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import { FaBars, FaBarsStaggered } from "react-icons/fa6";
 import { RiUserLine } from "react-icons/ri";
+import { ShopContext } from "../context/ShopContext";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const {getCartCount} = useContext(ShopContext)
   const toggleMenu = () => setMenuOpen((prev) => !prev);
   
 
@@ -50,7 +51,7 @@ const Header = () => {
             <div className="relative text-[27px] ring-1 ring-slate-900 rounded-full px-3 bold-18">
               Cart
               <span className="bg-secondary text-white text-[12px] font-semibold absolute -top-3.5 -right-2 flexCenter w-4 h-4 rounded-full shadow-md">
-                0
+                {getCartCount()}
               </span>
             </div>
           </Link>
